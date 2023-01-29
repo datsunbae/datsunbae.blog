@@ -51,19 +51,19 @@ const Home: NextPage = ({
           })}
         </div>
 
-      {filterPost.map((blog: Post) => {
+      {filterPost.map((post: Post) => {
           return (
             <div
-              key={blog.id}
+              key={post.id}
               className="max-w-[28em] max-h-[20em] overflow-hidden mx-6 mb-6 bg-neutral-300 text-zinc-800 rounded-lg p-4 hover:bg-neutral-500 hover:text-neutral-300 transition-all duration-300"
             >
-              <a href={blog.url} target="_blank" rel="noreferrer">
+              <a href={post.url} target="_blank" rel="noreferrer">
                 <PostPreview
-                  title={blog.title}
-                  bodyText={blog.bodyText}
-                  createdAt={blog.createdAt}
-                  author={blog.author}
-                  tags={blog.tags}
+                  title={post.title}
+                  bodyText={post.bodyText}
+                  createdAt={post.createdAt}
+                  author={post.author}
+                  tags={post.tags}
                 />
               </a>
             </div>

@@ -1,5 +1,5 @@
-import {Post} from '../types/post';
-import {queryGQL} from './queryGPL';
+import {Post, PostDetails} from '../types/post';
+import {getDiscusstions, getDisscustionDetails} from './queryGPL';
 const API_URL = 'https://api.github.com/graphql';
 const token = process.env.ACCESS_TOKEN_GITHUB;
 const idCategoryDiscussion = process.env.DISCUSSION_CATEGORY_ID;
@@ -11,7 +11,7 @@ export async function getBlogs(): Promise<Post[]> {
       Authorization: `Bearer ${token}`,
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify({query: queryGQL(idCategoryDiscussion)}),
+    body: JSON.stringify({query: getDiscusstions(idCategoryDiscussion)}),
   });
 
   const res = await response.json();
@@ -30,7 +30,7 @@ export async function getBlogs(): Promise<Post[]> {
       labels,
     } = discusstion;
 
-    const urlDiscusstion = `/blog/${id}`;
+    const urlDiscusstion = `/post/${id}`;
     const tags: string[] = labels.nodes.map((tag: {name: string}) => {
       return tag.name;
     });
@@ -52,3 +52,21 @@ export async function getBlogs(): Promise<Post[]> {
 
   return posts;
 }
+
+
+export async function getBlogDetails(postID : number) : Promise<PostDetails> {
+  const response = await fetch(API_URL, {
+    method: 'POST',
+    headers: {
+      Authorization: `Bearer ${token}`,
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({query: getDisscustionDetails(postID)}),
+  });
+
+  const res = await response.json();
+  const discusstion = res.data.repository.discussion;
+  return discusstion;
+}
+
+

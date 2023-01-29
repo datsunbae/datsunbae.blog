@@ -1,4 +1,4 @@
-export function queryGQL(discustionID: string | undefined) {
+export function getDiscusstions(discustionID: string | undefined) {
   return `{
         repository(owner: "datsunbae", name: "datsunbae.blog") {
             discussions(first: 100, categoryId: "${discustionID}") {
@@ -24,4 +24,21 @@ export function queryGQL(discustionID: string | undefined) {
             }
           }
     }`;
+}
+
+export function getDisscustionDetails(postId: number | undefined) {
+  return `{
+    repository(owner: "datsunbae", name: "datsunbae.blog") {
+      discussion(number: ${postId}) {
+        title
+        bodyHTML
+        createdAt
+        author {
+          login
+          url
+          avatarUrl
+        }
+      }
+    }
+  }`
 }
