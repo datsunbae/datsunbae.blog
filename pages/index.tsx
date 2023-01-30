@@ -3,6 +3,7 @@ import {getBlogs} from '@/server/blogs';
 import {Post} from '@/types/post';
 import {GetServerSideProps, InferGetServerSidePropsType, NextPage} from 'next';
 import { useMemo, useState } from 'react';
+import Link from 'next/link';
 
 const Home: NextPage = ({
   posts,
@@ -44,7 +45,7 @@ const Home: NextPage = ({
       <div className="flex gap-3 mb-12">
           {tags.map((tag: string, index: number) => {
             return (
-              <button key={index} className={`${tagsSelected.includes(tag) ? 'label-selected hover:bg-sky-400 transition-all duration-300' : 'label hover:bg-sky-400 transition-all duration-300'}`} onClick={handleClickSetTags}>
+              <button key={index} className={`${tagsSelected.includes(tag) ? 'label-selected ' : 'label'}`} onClick={handleClickSetTags}>
                 {tag}
               </button>
             )
@@ -57,7 +58,7 @@ const Home: NextPage = ({
               key={post.id}
               className="max-w-[28em] max-h-[20em] overflow-hidden mx-6 mb-6 bg-neutral-300 text-zinc-800 rounded-lg p-4 hover:bg-neutral-500 hover:text-neutral-300 transition-all duration-300"
             >
-              <a href={post.url} target="_blank" rel="noreferrer">
+              <Link href={post.url ?? ''}>
                 <PostPreview
                   title={post.title}
                   bodyText={post.bodyText}
@@ -65,7 +66,7 @@ const Home: NextPage = ({
                   author={post.author}
                   tags={post.tags}
                 />
-              </a>
+              </Link>
             </div>
           )
         })}
