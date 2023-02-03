@@ -1,17 +1,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
-@import "github-syntax-dark/lib/github-dark.css";
+@import 'github-syntax-dark/lib/github-dark.css';
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer components {
-    .layout {
-      @apply w-screen h-screen overflow-auto flex flex-col items-center bg-zinc-800 text-neutral-300 font-poppins;
-    }
-    .label {
-      @apply bg-sky-600 px-2 mt-2 font-semibold rounded-xl text-zinc-800 hover:bg-sky-400 transition-all duration-300;
-    }
-    .label-selected {
-      @apply bg-sky-800 px-2 mt-2 font-semibold rounded-xl text-neutral-300 hover:bg-sky-400 transition-all duration-300;
-    }
+  .layout {
+    @apply h-screen overflow-y-auto overflow-x-hidden bg-zinc-800 text-neutral-300 font-poppins flex flex-col;
   }
+  .container-content {
+    @apply w-screen flex flex-col items-center mt-5;
+  }
+  .label {
+    @apply bg-sky-600 px-2 mt-2 font-semibold rounded-xl text-zinc-800 hover:bg-sky-400 transition-all duration-300;
+  }
+  .label-selected {
+    @apply bg-sky-800 px-2 mt-2 font-semibold rounded-xl text-neutral-300 hover:bg-sky-400 transition-all duration-300;
+  }
+}

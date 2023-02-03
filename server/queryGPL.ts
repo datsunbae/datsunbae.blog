@@ -40,5 +40,23 @@ export function getDisscustionDetails(postId: number | undefined) {
         }
       }
     }
-  }`
+  }`;
+}
+
+export function test() {
+  return `mutation {
+    createDiscussion(input: {repositoryId: "R_kgDOI2bUHQ", categoryId: "DIC_kwDOI2bUHc4CT23Z", body: "The body123", title: "The title123"}) {
+      discussion {
+        id
+      }
+    }
+  }`;
+}
+
+export function testcomment() {
+  return `mutation {
+    addDiscussionComment(input: {discussionId: "D_kwDOI2bUHc4ASVXt",  body: "The body"}) {
+      clientMutationId
+    } 
+  }`;
 }

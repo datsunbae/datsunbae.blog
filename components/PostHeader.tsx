@@ -1,23 +1,26 @@
 /* eslint-disable @next/next/no-img-element */
-import React from 'react'
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import {IconProp} from '@fortawesome/fontawesome-svg-core';
+import {faCircleCheck} from '@fortawesome/free-solid-svg-icons';
+import React from 'react';
 
 interface headerProps {
-  createdAt: string
+  createdAt: string;
   author: {
-    login: string
-    avatarUrl: string
-    url: string
-  }
+    login: string;
+    avatarUrl: string;
+    url: string;
+  };
 }
 
 const PostHeader: React.FC<headerProps> = (props) => {
-  const {createdAt, author} = props
-  const createdDate: Date = new Date(createdAt)
+  const {createdAt, author} = props;
+  const createdDate: Date = new Date(createdAt);
   const options: Intl.DateTimeFormatOptions = {
     year: 'numeric',
     month: 'short',
     day: 'numeric',
-  }
+  };
   return (
     <div className="flex">
       <img
@@ -26,18 +29,18 @@ const PostHeader: React.FC<headerProps> = (props) => {
         alt="author pfp"
       />
       <div className="flex flex-col">
-        <p className="font-semibold text-[1rem]"> {author.login} </p>
+        <div className="flex items-center">
+          <p className="font-semibold text-[1rem] mr-1"> {author.login} </p>
+          <FontAwesomeIcon color="#5271e9" icon={faCircleCheck as IconProp} />
+        </div>
         <div className="flex flex-wrap">
-          <li className="list-none font-normal text-[0.85rem] md:mr-4 sm:mr-0">
-            {author.url}
-          </li>
           <li className="list-none font-normal text-[0.85rem]">
             {createdDate.toLocaleDateString('vi-VN', options)}
           </li>
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default PostHeader
+export default PostHeader;

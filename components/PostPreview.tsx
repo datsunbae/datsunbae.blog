@@ -1,13 +1,13 @@
-import { Post } from '@/types/post';
-import React from 'react'
+import {Post} from '@/types/post';
+import React from 'react';
 import PostHeader from './PostHeader';
 
-const PostPreview : React.FC<Post> = (props) => {
-    const {title, bodyText, createdAt, author, tags} = props;
-    const textPreview = bodyText.substring(0, 150) + '...';
+const PostPreview: React.FC<Post> = (props) => {
+  const {title, bodyText, createdAt, author, tags} = props;
+  const textPreview = bodyText.substring(0, 150) + '...';
   return (
     <section>
-        <PostHeader createdAt={createdAt} author={author} />
+      <PostHeader createdAt={createdAt} author={author} />
       <h2 className="font-bold"> {title} </h2>
       <p className="mt-2"> {textPreview} </p>
       <div className=" flex gap-3">
@@ -20,11 +20,11 @@ const PostPreview : React.FC<Post> = (props) => {
               {' '}
               {tag}{' '}
             </p>
-          )
+          );
         })}
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default PostPreview
+export default PostPreview;

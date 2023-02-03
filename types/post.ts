@@ -15,12 +15,12 @@ export interface Post {
 }
 
 export interface PostDetails {
-  title: string
-  bodyHTML: string
-  createdAt: string
+  title: string;
+  bodyHTML: string;
+  createdAt: string;
   author: {
     login: string;
     url: string;
     avatarUrl: string;
-  }
+  };
 }
